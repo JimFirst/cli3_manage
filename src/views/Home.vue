@@ -1,18 +1,45 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div class="test">
+      测试环境
+    </div>
+    <div>
+      {{baseUrl}}
+    </div>
+    <z-test :obj="obj">
+      <template #default="slotProps">
+        {{slotProps.obj.b}}
+      </template>
+    </z-test>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import ZTest from '../components/Test'
 export default {
-  name: 'Home',
+  name: 'app',
   components: {
-    HelloWorld
+    ZTest
+  },
+  data() {
+    return {
+      baseUrl: process.env.VUE_APP_URL,
+      obj: {
+        a: 1,
+        b: 2
+      }
+    }
+  },
+  created() {
+    console.log(process.env.VUE_APP_URL)
+  },
+  methods: {
+    test() {}
   }
 }
 </script>
+<style lang="scss">
+.test {
+  color: $red;
+}
+</style>
