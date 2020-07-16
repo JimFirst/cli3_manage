@@ -11,6 +11,7 @@
         {{slotProps.obj.b}}
       </template>
     </z-test>
+    <el-button type="primary" @click="test">点击事件</el-button>
   </div>
 </template>
 
@@ -31,10 +32,14 @@ export default {
     }
   },
   created() {
-    console.log(process.env.VUE_APP_URL)
+    console.log(process.env)
   },
   methods: {
-    test() {}
+    test() {
+      this.$http.getJobList().then(res => {
+        console.log(res)
+      })
+    }
   }
 }
 </script>

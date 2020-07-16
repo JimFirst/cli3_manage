@@ -1,4 +1,9 @@
 module.exports = {
+  devServer: {
+    port: 8111,
+    open: true,
+    overlay: false
+  },
   css: {
     loaderOptions: {
       sass: {
